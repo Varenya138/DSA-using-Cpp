@@ -1,0 +1,54 @@
+#include <map>
+#include <set>
+#include <list>
+#include <cmath>
+#include <ctime>
+#include <deque>
+#include <queue>
+#include <stack>
+#include <string>
+#include <bitset>
+#include <cstdio>
+#include <limits>
+#include <vector>
+#include <climits>
+#include <cstring>
+#include <cstdlib>
+#include <fstream>
+#include <numeric>
+#include <sstream>
+#include <iostream>
+#include <algorithm>
+#include <unordered_map>
+
+using namespace std;
+
+int main(){
+    int day, month, year;
+    cin >> day >> month >> year;
+
+    if (month == 1 || month == 2) {
+        month += 12;
+        year--;
+    }
+
+    int q = day;
+    int m = month;
+    int k = year % 100;
+    int j = year / 100;
+
+    int h = (q + 13 * (m + 1) / 5 + k + k / 4 + j / 4 + 5 * j) % 7;
+
+    switch (h) {
+        case 0: cout << "Saturday"; break;
+        case 1: cout << "Sunday"; break;
+        case 2: cout << "Monday"; break;
+        case 3: cout << "Tuesday"; break;
+        case 4: cout << "Wednesday"; break;
+        case 5: cout << "Thursday"; break;
+        case 6: cout << "Friday"; break;
+        default: cout << "Invalid day";
+    }
+
+    return 0;
+}
