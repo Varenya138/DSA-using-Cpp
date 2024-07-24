@@ -1,0 +1,65 @@
+#include <map>
+#include <set>
+#include <list>
+#include <cmath>
+#include <ctime>
+#include <deque>
+#include <queue>
+#include <stack>
+#include <string>
+#include <bitset>
+#include <cstdio>
+#include <limits>
+#include <vector>
+#include <climits>
+#include <cstring>
+#include <cstdlib>
+#include <fstream>
+#include <numeric>
+#include <sstream>
+#include <iostream>
+#include <algorithm>
+#include <unordered_map>
+
+using namespace std;
+int main() {
+    int T;
+    cin >> T;
+    
+    while (T--) {
+        int N;
+        cin >> N;
+        
+        // Calculate facing seat number
+        int facing_seat;
+        int rem = N % 12;
+        switch (rem) {
+            case 1: facing_seat = N + 11; break;
+            case 2: facing_seat = N + 9; break;
+            case 3: facing_seat = N + 7; break;
+            case 4: facing_seat = N + 5; break;
+            case 5: facing_seat = N + 3; break;
+            case 6: facing_seat = N + 1; break;
+            case 7: facing_seat = N - 1; break;
+            case 8: facing_seat = N - 3; break;
+            case 9: facing_seat = N - 5; break;
+            case 10: facing_seat = N - 7; break;
+            case 11: facing_seat = N - 9; break;
+            case 0: facing_seat = N - 11; break;
+        }
+        
+        // Determine seat type
+        string seat_type;
+        if (rem == 1 || rem == 6 || rem == 7 || rem == 12)
+            seat_type = "WS";
+        else if (rem == 2 || rem == 5 || rem == 8 || rem == 11)
+            seat_type = "MS";
+        else
+            seat_type = "AS";
+        
+        // Output the result
+        cout << seat_type << " " << facing_seat << endl;
+    }
+    
+    return 0;
+}
