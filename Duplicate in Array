@@ -1,0 +1,25 @@
+#include <iostream>
+#include <vector>
+#include <cstdlib> // for abs function
+
+using namespace std;
+
+int findDuplicate(vector<int>& arr) {
+    int n = arr.size();
+    
+    // Traverse the array
+    for (int i = 0; i < n; ++i) {
+        int index = abs(arr[i]) - 1;
+        
+        // Mark the element at index as negative if not already marked
+        if (arr[index] > 0) {
+            arr[index] = -arr[index];
+        } else {
+            // If it's already negative, it means index+1 is the duplicate
+            return abs(arr[i]);
+        }
+    }
+    
+    // Ideally, we should never reach here due to problem constraints
+    return -1;
+}
