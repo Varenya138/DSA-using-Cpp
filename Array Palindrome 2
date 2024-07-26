@@ -1,0 +1,54 @@
+#include <map>
+#include <set>
+#include <list>
+#include <cmath>
+#include <ctime>
+#include <deque>
+#include <queue>
+#include <stack>
+#include <string>
+#include <bitset>
+#include <cstdio>
+#include <limits>
+#include <vector>
+#include <climits>
+#include <cstring>
+#include <cstdlib>
+#include <fstream>
+#include <numeric>
+#include <sstream>
+#include <iostream>
+#include <algorithm>
+#include <unordered_map>
+
+using namespace std;
+int main() {
+    int N;
+    cin >> N;
+    vector<int> arr(N);
+    for (int i = 0; i < N; i++) {
+        cin >> arr[i];
+    }
+
+    int left = 0, right = N - 1;
+    int mergeOperations = 0;
+
+    while (left < right) {
+        if (arr[left] == arr[right]) {
+            left++;
+            right--;
+        } else if (arr[left] < arr[right]) {
+            arr[left + 1] += arr[left];
+            left++;
+            mergeOperations++;
+        } else {
+            arr[right - 1] += arr[right];
+            right--;
+            mergeOperations++;
+        }
+    }
+
+    cout << mergeOperations << endl;
+
+    return 0;
+}
