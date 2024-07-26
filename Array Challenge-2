@@ -1,0 +1,46 @@
+#include <map>
+#include <set>
+#include <list>
+#include <cmath>
+#include <ctime>
+#include <deque>
+#include <queue>
+#include <stack>
+#include <string>
+#include <bitset>
+#include <cstdio>
+#include <limits>
+#include <vector>
+#include <climits>
+#include <cstring>
+#include <cstdlib>
+#include <fstream>
+#include <numeric>
+#include <sstream>
+#include <iostream>
+#include <algorithm>
+#include <unordered_map>
+
+using namespace std;
+int main() {
+    int N;
+    cin >> N; // Read the size of the array
+
+    vector<int> Arr(N);
+    for (int i = 0; i < N; ++i) {
+        cin >> Arr[i]; // Read the array elements
+    }
+
+    int count = 1; // The first element is always considered
+    int max_value = Arr[0]; // Initialize max_value with the first element
+
+    for (int i = 1; i < N; ++i) {
+        if (Arr[i] > max_value) {
+            ++count; // Increment count if the current element is greater than max_value
+            max_value = Arr[i]; // Update max_value to the current element
+        }
+    }
+
+    cout << count << endl; // Print the result
+    return 0;
+}
