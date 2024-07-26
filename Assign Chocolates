@@ -1,0 +1,57 @@
+#include <map>
+#include <set>
+#include <list>
+#include <cmath>
+#include <ctime>
+#include <deque>
+#include <queue>
+#include <stack>
+#include <string>
+#include <bitset>
+#include <cstdio>
+#include <limits>
+#include <vector>
+#include <climits>
+#include <cstring>
+#include <cstdlib>
+#include <fstream>
+#include <numeric>
+#include <sstream>
+#include <iostream>
+#include <algorithm>
+#include <unordered_map>
+
+using namespace std;
+int main() {
+    int N1, N2;
+    cin >> N1;
+    vector<int> g(N1);
+    for (int i = 0; i < N1; i++) {
+        cin >> g[i];
+    }
+    cin >> N2;
+    vector<int> s(N2);
+    for (int i = 0; i < N2; i++) {
+        cin >> s[i];
+    }
+
+    sort(g.begin(), g.end());
+    sort(s.begin(), s.end());
+
+    int i = 0, j = 0;
+    int happyChildren = 0;
+
+    while (i < N1 && j < N2) {
+        if (s[j] >= g[i]) {
+            happyChildren++;
+            i++;
+            j++;
+        } else {
+            j++;
+        }
+    }
+
+    cout << happyChildren << endl;
+
+    return 0;
+}
