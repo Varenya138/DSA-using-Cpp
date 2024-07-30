@@ -1,0 +1,27 @@
+/*
+    Time complexity: O(N * M)
+    Space complexity: O(1)
+
+    Where 'N' and 'M' are the number of rows and columns of the matrix, respectively.
+*/
+
+int countNegativeNumbers(vector<vector<int>> &mat)
+{
+    int count = 0;
+
+    // Iterate each row.
+    for (int i = 0; i < mat.size(); i++) {
+
+        // Iterate elements of the current row.
+        for (int j = 0; j < mat[0].size(); j++) {
+
+            // If negative found, increment count by 1.
+            if (mat[i][j] < 0) {
+
+                count++;
+            }
+        }
+    }
+
+    return count;
+}
