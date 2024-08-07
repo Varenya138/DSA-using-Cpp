@@ -1,0 +1,44 @@
+class Twitter {
+public:
+unordered_map<int, unordered_set<int>> tweetUserIdMap;
+vector<int> allTweets;
+unordered_map<int,unordered_set<int>> followerMap;
+    Twitter() {
+        
+    }
+    
+    void postTweet(int userId, int tweetId) {
+        tweetUserIdMap[userId].insert(tweetId);
+        allTweets.push_back(tweetId);
+    }
+    
+    vector<int> getNewsFeed(int userId) {
+        unordered_set<int> relatableTweets;
+        for(auto it : tweetUserIdMap[userId]) {
+            relatableTweets.insert(it);
+        }
+        for(auto it : followerMap[userId]) {
+            for(auto  jt : tweetUserIdMap[it]) {
+                relatableTweets.insert(jt);
+            }
+        }
+        vector<int> ans;
+        for(int i =  allTweets.size() - 1; i >= 0; i --) {
+                if(relatableTweets.find(allTweets[i]) != relatableTweets.end()) {
+                    ans.push_back(allTweets[i]);
+                }
+                if(ans.size() == 10) {
+                    break;
+                }
+        }
+        return ans;
+    }
+    
+    void follow(int followerId, int followeeId) {
+        followerMap[followerId].insert(followeeId);
+    }
+    
+    void unfollow(int followerId, int followeeId) {
+        followerMap[followerId].erase(followeeId);
+    }
+};
