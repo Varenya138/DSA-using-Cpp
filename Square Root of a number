@@ -1,0 +1,28 @@
+// int floorSqrt(int n)
+// {
+//     // Write your code here.
+//     int low = 1, high = n;
+
+     
+
+// }
+
+
+long long int BS(long long int n, long long int s, long long int e){
+    if(s>e)
+        return -1;
+    long long int mid=s+(e-s)/2;
+    long long int sqr=mid*mid;
+    if(sqr<=n && (mid+1)*(mid+1)>n)
+        return mid;    
+    if(sqr<n){
+        return BS(n,mid+1,e);
+    }    
+    else{
+        return BS(n,s,mid-1);
+    } 
+}     
+
+int floorSqrt(long long int N) {    // Write your code here.
+    return BS(N,0,N); 
+}
